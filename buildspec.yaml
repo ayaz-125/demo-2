@@ -4,8 +4,8 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
-      - sudo apt-get update
-      - sudo apt-get install -y python3-pip
+      - yum apt-get update
+      - yum apt-get install -y python3-pip
       - pip install -r requirements.txt
 
   build:
