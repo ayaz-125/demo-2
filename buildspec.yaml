@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing dependencies...
+      - apt-get update
+      - apt-get install -y python3-pip
+      - pip install -r requirements.txt
+
+  build:
+    commands:
+      - echo Build started on $(date)
+      - echo No build steps needed for Flask app
+
+  post_build:
+    commands:
+      - echo Build completed successfully.
+
+artifacts:
+  files:
+    - app.py
+    - templates/index.html
+    - requirements.txt
