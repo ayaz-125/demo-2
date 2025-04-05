@@ -4,21 +4,26 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
-      - yum apt-get update
-      - yum apt-get install -y python3-pip
+      - sudo apt-get update
+      - sudo apt-get install -y nginx
       - pip install -r requirements.txt
 
   build:
     commands:
-      - echo Build started on $(date)
-      - echo No build steps needed for Flask app
+      - echo Build started on `date`
+      - echo Copying HTML templates...
+      - sudo cp -r templates /var/www/html/
+      # - sudo cp -r static /var/www/html/  # If you have static files
+      - echo Copying application file...
+      - cp app.py .
 
   post_build:
     commands:
-      - echo Build completed successfully.
+      - echo Configuring Nginx...
+      # Optional: Restart or configure Nginx if needed
+      # - sudo systemctl restart nginx
 
 artifacts:
   files:
     - app.py
     - templates/index.html
-    - requirements.txt
