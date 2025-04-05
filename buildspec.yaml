@@ -4,24 +4,15 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
-      - sudo yum update -y
-      - sudo yum install -y nginx
       - pip install -r requirements.txt
 
   build:
     commands:
       - echo Build started on `date`
-      - echo Copying HTML templates...
-      - sudo cp -r templates /var/www/html/
-      # - sudo cp -r static /var/www/html/  # If you have static files
-      - echo Copying application file...
-      - cp app.py .
-
-  post_build:
-    commands:
-      - echo Configuring Nginx...
-      # Optional: Restart or configure Nginx if needed
-      # - sudo systemctl restart nginx
+      - cp -r templates /app/templates
+      - cp app.py /app/
+      - echo Starting app using Gunicorn...
+      - gunicorn -b 0.0.0.0:8000 app:app &
 
 artifacts:
   files:
