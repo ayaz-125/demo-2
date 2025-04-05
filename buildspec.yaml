@@ -4,17 +4,27 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
+      - pip install --upgrade pip
       - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo Pre-build phase started...
+      - echo No pre-build steps needed for now.
 
   build:
     commands:
-      - echo Build started on `date`
-      - cp -r templates /app/templates
-      - cp app.py /app/
-      - echo Starting app using Gunicorn...
-      - gunicorn -b 0.0.0.0:8000 app:app &
+      - echo Build started...
+      - echo You can add test commands here if needed.
+      # Example: python -m unittest discover tests
+
+  post_build:
+    commands:
+      - echo Build completed.
+      - echo Starting Flask app...
+      # Optional deployment steps go here
 
 artifacts:
   files:
-    - app.py
-    - templates/index.html
+    - '**/*'
+  discard-paths: no
