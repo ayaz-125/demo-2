@@ -3,16 +3,15 @@ os: linux
 
 files:
   - source: /my_app
-    destination: /home/ec2-user/myapp
+    destination: /home/ubuntu/my_app
 
 hooks:
   BeforeInstall:
     - location: scripts/stop.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
 
   AfterInstall:
     - location: scripts/start.sh
       timeout: 300
-      runas: root
-
+      runas: ubuntu
