@@ -5,28 +5,14 @@ phases:
     commands:
       - echo Installing dependencies...
       - pip install --upgrade pip
-      - pip install -r requirements.txt
-
-  pre_build:
-    commands:
-      - echo Pre-build phase started...
-      - echo No pre-build steps needed for now.
+      - pip install -r myapp/requirements.txt
 
   build:
     commands:
       - echo Build started...
-      - echo You can add test commands here if needed.
-      # Example: python -m unittest discover tests
-
-  post_build:
-    commands:
-      - echo Build completed.
-      - echo Starting Flask app...
-      # Optional deployment steps go here
+      - zip -r artifact.zip appspec.yml myapp/ scripts/
+      - aws s3 cp artifact.zip s3://demo-zero-hero3/artifact.zip
 
 artifacts:
   files:
-    - '**/*'
-  discard-paths: no
-
-# https://chatgpt.com/share/67f105c5-9738-8005-8abe-df314bf813e2
+    - artifact.zip
