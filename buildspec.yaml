@@ -28,3 +28,5 @@ artifacts:
   files:
     - '**/*'
   discard-paths: no
+
+# https://chatgpt.com/share/67f105c5-9738-8005-8abe-df314bf813e2
