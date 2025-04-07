@@ -2,8 +2,8 @@
 
 echo "Running start.sh..." >> /home/ec2-user/start.log
 
-cd /home/ec2-user/myapp || {
-  echo "Failed to cd into /home/ec2-user/myapp" >> /home/ec2-user/start.log
+cd /home/ec2-user/my_app || {
+  echo "Failed to cd into /home/ec2-user/my_app" >> /home/ec2-user/start.log
   exit 1
 }
 
