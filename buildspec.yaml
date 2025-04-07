@@ -17,4 +17,7 @@ phases:
 
 artifacts:
   files:
-    - artifact.zip
+    - appspec.yml
+    - scripts/**
+    - my_app/**
+  discard-paths: no
